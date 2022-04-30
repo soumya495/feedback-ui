@@ -13,7 +13,7 @@
   --primary: #ec255a;
   --secondary-dark: #082032;
   --secondary-light: #2c394b;
-  --white: #faedf0;
+  --white: #fffafa;
   --transition-time: 400ms;
 }
 
@@ -179,11 +179,53 @@ nav > h1 {
 }
 
 .reviews-container {
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .reviews-container > .container {
-  margin-top: 1rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.rating {
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--primary);
+  top: -0.75rem;
+  left: -0.5rem;
+  border-radius: 100%;
+  color: var(--white);
+  outline: 2px solid var(--white);
+}
+
+.review {
+  margin-top: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.67px;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icons svg {
+  cursor: pointer;
+  fill: var(--secondary-light);
+  transition: all var(--transition-time) ease;
+}
+
+.icons svg:hover {
+  fill: var(--secondary-dark);
+  transform: scale(1.25);
 }
 
 @media (max-width: 700px) {

@@ -21,9 +21,21 @@ export const ReviewContextProvider = ({ children }) => {
     setReviews((prev) => [review, ...prev])
   }
 
+  function deleteReview(reviewId) {
+    setReviews(reviews.filter((review) => review.id !== reviewId))
+  }
+
   return (
     <ReviewContext.Provider
-      value={{ rating, setRating, review, setReview, reviews, addReviews }}
+      value={{
+        rating,
+        setRating,
+        review,
+        setReview,
+        reviews,
+        addReviews,
+        deleteReview,
+      }}
     >
       {children}
     </ReviewContext.Provider>

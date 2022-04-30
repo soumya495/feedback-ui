@@ -1,9 +1,10 @@
 import { useContext } from 'react'
 import ReviewContext from '../context/ReviewContext'
 import { ImSad } from 'react-icons/im'
+import { FaRegEdit, FaTimes } from 'react-icons/fa'
 
 function Reviews() {
-  const { reviews } = useContext(ReviewContext)
+  const { reviews, deleteReview } = useContext(ReviewContext)
 
   if (reviews.length === 0)
     return (
@@ -17,7 +18,16 @@ function Reviews() {
     <div className='reviews-container'>
       {reviews.map((review) => (
         <div className='container' key={review.id}>
-          {review.review}
+          <div className='rating'>{review.rating}</div>
+          <p className='review'>{review.review}</p>
+          <div className='icons'>
+            <FaRegEdit fontSize='1.15rem' title='Edit' />
+            <FaTimes
+              fontSize='1.15rem'
+              title='Delete'
+              onClick={() => deleteReview(review.id)}
+            />
+          </div>
         </div>
       ))}
     </div>

@@ -25,8 +25,6 @@ function Input() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Rating: ', rating)
-    console.log('Review: ', review)
     addReviews({ id: uuidv4(), rating, review })
     setRating(0)
     setReview('')
