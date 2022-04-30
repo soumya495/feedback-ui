@@ -14,6 +14,7 @@
   --secondary-dark: #082032;
   --secondary-light: #2c394b;
   --white: #faedf0;
+  --transition-time: 400ms;
 }
 
 body {
@@ -22,4 +23,133 @@ body {
   overflow-x: hidden;
   background-color: var(--secondary-light);
   color: var(--white);
+}
+
+nav {
+  width: 100%;
+  padding-block: 0.75rem;
+  background-color: var(--secondary-dark);
+}
+
+nav > h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--primary);
+}
+
+.main-container {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-block: 2rem;
+}
+
+.container {
+  width: 100%;
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 1rem;
+  color: var(--secondary-dark);
+}
+
+.input-heading {
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.inputfield-container {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.radio-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  /* border: 1px solid red; */
+}
+
+.radio {
+  position: relative;
+}
+
+.radio > input[type='radio'] {
+  position: absolute;
+  top: -10000px;
+  left: 0;
+  opacity: 0;
+}
+
+.radio > label {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background-color: rgb(215, 215, 215);
+  border-radius: 50%;
+  transition: background-color var(--transition-time) ease;
+}
+
+.radio > label:hover {
+  background-color: rgb(176, 176, 176);
+}
+
+.radio > input[type='radio']:checked ~ label {
+  background-color: var(--primary);
+}
+
+.input-group {
+  margin-top: 1.5rem;
+  position: relative;
+  /* border: 1px solid red; */
+}
+
+.input-group > input[type='text'] {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 6rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(215, 215, 215);
+  background-color: transparent;
+  font-size: 1.05rem;
+}
+
+.input-group > input[type='text']:focus {
+  outline: 1px solid rgb(215, 215, 215);
+}
+
+.input-group > button {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  padding: 0.65rem 1.5rem;
+  background-color: rgb(215, 215, 215);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color var(--transition-time) ease;
+}
+
+.input-group > button:hover {
+  background-color: rgb(176, 176, 176);
+}
+
+.not-active {
+  pointer-events: none;
+}
+
+.active {
+  pointer-events: all;
+}
+
+@media (max-width: 700px) {
+  .radio-container {
+    justify-content: center;
+  }
 }
