@@ -4,10 +4,14 @@ function Input() {
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
   const [btnActive, setBtnActive] = useState(false)
+  const [message, setMessage] = useState('')
 
   useEffect(() => {
     if (rating >= 1 && rating <= 10 && review !== '') {
       setBtnActive(true)
+      if (review.length >= 1 && review.length <= 10)
+        setMessage('Review should contain atleast 10 characters!')
+      else setMessage('')
     } else {
       setBtnActive(false)
     }
@@ -160,6 +164,13 @@ function Input() {
           </button>
         </div>
       </form>
+      <p
+        className={`validation-message ${
+          message !== '' ? 'active-message' : 'notactive-message'
+        }`}
+      >
+        {message}
+      </p>
     </div>
   )
 }

@@ -48,8 +48,10 @@ nav > h1 {
   width: 100%;
   background-color: var(--white);
   padding: 2rem;
+  padding-bottom: 2.5rem;
   border-radius: 1rem;
   color: var(--secondary-dark);
+  position: relative;
 }
 
 .input-heading {
@@ -146,6 +148,25 @@ nav > h1 {
 
 .active {
   pointer-events: all;
+}
+
+.validation-message {
+  position: absolute;
+  font-size: 0.95rem;
+  color: rgb(150, 29, 70);
+  opacity: 0.8;
+  bottom: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity var(--transition-time) ease;
+}
+
+.active-message {
+  opacity: 1;
+}
+
+.notactive-message {
+  opacity: 0;
 }
 
 @media (max-width: 700px) {
