@@ -152,12 +152,12 @@ nav > h1 {
 
 .validation-message {
   position: absolute;
+  width: 100%;
+  text-align: center;
   font-size: 0.95rem;
-  color: rgb(150, 29, 70);
-  opacity: 0.8;
+  color: var(--primary);
+  left: 0;
   bottom: 0.75rem;
-  left: 50%;
-  transform: translateX(-50%);
   transition: opacity var(--transition-time) ease;
 }
 
@@ -176,6 +176,14 @@ nav > h1 {
 
 .noresults-container > h3 {
   font-size: 2.5rem;
+}
+
+.reviews-container {
+  margin-top: 2rem;
+}
+
+.reviews-container > .container {
+  margin-top: 1rem;
 }
 
 @media (max-width: 700px) {

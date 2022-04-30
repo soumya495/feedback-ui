@@ -14,7 +14,7 @@ function Reviews() {
     )
 
   return (
-    <div>
+    <div className='reviews-container'>
       {reviews.map((review) => (
         <div className='container' key={review.id}>
           {review.review}
