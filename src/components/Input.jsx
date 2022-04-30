@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import ReviewContext from '../context/ReviewContext'
 
 function Input() {
-  const [rating, setRating] = useState(0)
-  const [review, setReview] = useState('')
+  const { rating, setRating, review, setReview, addReviews } =
+    useContext(ReviewContext)
   const [btnActive, setBtnActive] = useState(false)
   const [message, setMessage] = useState('')
 
@@ -25,6 +27,7 @@ function Input() {
     e.preventDefault()
     console.log('Rating: ', rating)
     console.log('Review: ', review)
+    addReviews({ id: uuidv4(), rating, review })
     setRating(0)
     setReview('')
     setBtnActive(false)
