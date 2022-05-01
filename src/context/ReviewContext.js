@@ -62,6 +62,7 @@ export const ReviewContextProvider = ({ children }) => {
 
   function getAvgReviews() {
     let avgRating = 0
+    if (reviews.length === 0) return 0.0
     reviews.forEach((review) => (avgRating += review.rating))
     avgRating /= reviews.length
     avgRating = avgRating.toFixed(1)
