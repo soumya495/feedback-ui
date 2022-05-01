@@ -4,7 +4,8 @@ import { ImSad } from 'react-icons/im'
 import { FaRegEdit, FaTimes } from 'react-icons/fa'
 
 function Reviews() {
-  const { reviews, deleteReview } = useContext(ReviewContext)
+  const { reviews, deleteReview, editReview, editId } =
+    useContext(ReviewContext)
 
   if (reviews.length === 0)
     return (
@@ -17,11 +18,20 @@ function Reviews() {
   return (
     <div className='reviews-container'>
       {reviews.map((review) => (
-        <div className='container' key={review.id}>
+        <div
+          className={`container ${
+            editId === review.id ? 'editing' : 'non-editing'
+          }`}
+          key={review.id}
+        >
           <div className='rating'>{review.rating}</div>
           <p className='review'>{review.review}</p>
           <div className='icons'>
-            <FaRegEdit fontSize='1.15rem' title='Edit' />
+            <FaRegEdit
+              fontSize='1.15rem'
+              title='Edit'
+              onClick={() => editReview(review.id)}
+            />
             <FaTimes
               fontSize='1.15rem'
               title='Delete'

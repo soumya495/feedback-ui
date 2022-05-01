@@ -11,6 +11,7 @@ function getFromLocalStorage() {
 export const ReviewContextProvider = ({ children }) => {
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
+  const [editId, setEditId] = useState('')
   const [reviews, setReviews] = useState(getFromLocalStorage())
 
   useEffect(() => {
@@ -25,6 +26,27 @@ export const ReviewContextProvider = ({ children }) => {
     setReviews(reviews.filter((review) => review.id !== reviewId))
   }
 
+  function editReview(reviewId) {
+    setEditId(reviewId)
+    reviews.forEach((review) => {
+      if (review.id === reviewId) {
+        setRating(review.rating)
+        setReview(review.review)
+      }
+    })
+  }
+
+  function updateReview(updatedReview) {
+    const updatedReviews = reviews.map((review) => {
+      if (review.id === updatedReview.id) return updatedReview
+      else return review
+    })
+    setReviews(updatedReviews)
+    setEditId('')
+    setRating(0)
+    setReview('')
+  }
+
   return (
     <ReviewContext.Provider
       value={{
@@ -35,6 +57,9 @@ export const ReviewContextProvider = ({ children }) => {
         reviews,
         addReviews,
         deleteReview,
+        editId,
+        editReview,
+        updateReview,
       }}
     >
       {children}

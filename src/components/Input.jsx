@@ -1,10 +1,18 @@
 import { useEffect, useState, useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import ReviewContext from '../context/ReviewContext'
+import RadioInputs from './RadioInputs'
 
 function Input() {
-  const { rating, setRating, review, setReview, addReviews } =
-    useContext(ReviewContext)
+  const {
+    rating,
+    setRating,
+    review,
+    setReview,
+    addReviews,
+    editId,
+    updateReview,
+  } = useContext(ReviewContext)
   const [btnActive, setBtnActive] = useState(false)
   const [message, setMessage] = useState('')
 
@@ -31,14 +39,54 @@ function Input() {
     setBtnActive(false)
   }
 
+  const handleEdit = (e) => {
+    e.preventDefault()
+    updateReview({ rating: rating, review: review, id: editId })
+  }
+
   return (
     <div className='container'>
       <h2 className='input-heading'>
         How would you rate your service with us?
       </h2>
-      <form className='inputfield-container' onSubmit={handleSubmit}>
+      <form
+        className='inputfield-container'
+        onSubmit={editId === '' ? handleSubmit : handleEdit}
+      >
         <div className='radio-container'>
-          <div className='radio'>
+          <RadioInputs rating={rating} handleRadioChange={handleRadioChange} />
+        </div>
+        <div className='input-group'>
+          <input
+            type='text'
+            placeholder='Write a review'
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+          />
+          <button
+            type='submit'
+            disabled={!btnActive}
+            className={btnActive ? 'active' : 'not-active'}
+          >
+            {editId === '' ? 'Send' : 'Edit'}
+          </button>
+        </div>
+      </form>
+      <p
+        className={`validation-message ${
+          message !== '' ? 'active-message' : 'notactive-message'
+        }`}
+      >
+        {message}
+      </p>
+    </div>
+  )
+}
+
+export default Input
+
+{
+  /* <div className='radio'>
             <input
               type='radio'
               name='rating'
@@ -147,33 +195,5 @@ function Input() {
               onChange={handleRadioChange}
             />
             <label htmlFor='rating-10'>10</label>
-          </div>
-        </div>
-        <div className='input-group'>
-          <input
-            type='text'
-            placeholder='Write a review'
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          />
-          <button
-            type='submit'
-            disabled={!btnActive}
-            className={btnActive ? 'active' : 'not-active'}
-          >
-            Send
-          </button>
-        </div>
-      </form>
-      <p
-        className={`validation-message ${
-          message !== '' ? 'active-message' : 'notactive-message'
-        }`}
-      >
-        {message}
-      </p>
-    </div>
-  )
+          </div> */
 }
-
-export default Input
