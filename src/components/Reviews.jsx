@@ -4,8 +4,7 @@ import { ImSad } from 'react-icons/im'
 import { FaRegEdit, FaTimes } from 'react-icons/fa'
 
 function Reviews() {
-  const { reviews, deleteReview, editReview, editId } =
-    useContext(ReviewContext)
+  const { reviews, editReview, editId, setDeleteId } = useContext(ReviewContext)
 
   if (reviews.length === 0)
     return (
@@ -35,7 +34,7 @@ function Reviews() {
             <FaTimes
               fontSize='1.15rem'
               title='Delete'
-              onClick={() => deleteReview(review.id)}
+              onClick={() => setDeleteId(review.id)}
             />
           </div>
         </div>

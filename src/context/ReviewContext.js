@@ -12,6 +12,7 @@ export const ReviewContextProvider = ({ children }) => {
   const [rating, setRating] = useState(0)
   const [review, setReview] = useState('')
   const [editId, setEditId] = useState('')
+  const [deleteId, setDeleteId] = useState('')
   const [reviews, setReviews] = useState(getFromLocalStorage())
 
   useEffect(() => {
@@ -24,9 +25,17 @@ export const ReviewContextProvider = ({ children }) => {
 
   function deleteReview(reviewId) {
     setReviews(reviews.filter((review) => review.id !== reviewId))
+    setDeleteId('')
   }
 
   function editReview(reviewId) {
+    // toggle edit mode
+    if (reviewId === editId) {
+      setEditId('')
+      setRating(0)
+      setReview('')
+      return
+    }
     setEditId(reviewId)
     reviews.forEach((review) => {
       if (review.id === reviewId) {
@@ -56,6 +65,8 @@ export const ReviewContextProvider = ({ children }) => {
         setReview,
         reviews,
         addReviews,
+        deleteId,
+        setDeleteId,
         deleteReview,
         editId,
         editReview,
