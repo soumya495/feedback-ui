@@ -56,6 +56,18 @@ export const ReviewContextProvider = ({ children }) => {
     setReview('')
   }
 
+  function getTotalReviews() {
+    return reviews.length
+  }
+
+  function getAvgReviews() {
+    let avgRating = 0
+    reviews.forEach((review) => (avgRating += review.rating))
+    avgRating /= reviews.length
+    avgRating = avgRating.toFixed(1)
+    return avgRating
+  }
+
   return (
     <ReviewContext.Provider
       value={{
@@ -71,6 +83,8 @@ export const ReviewContextProvider = ({ children }) => {
         editId,
         editReview,
         updateReview,
+        getTotalReviews,
+        getAvgReviews,
       }}
     >
       {children}

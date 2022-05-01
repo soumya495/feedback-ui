@@ -294,6 +294,14 @@ nav > h1 {
   background-color: var(--secondary-light);
 }
 
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem 0;
+  margin-top: 2rem;
+}
+
 @media (max-width: 700px) {
   .radio-container {
     justify-content: center;
