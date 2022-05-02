@@ -1,22 +1,20 @@
 import Navbar from './components/Navbar'
-import Input from './components/Input'
-import Reviews from './components/Reviews'
-import { ReviewContextProvider } from './context/ReviewContext'
-import DeleteConfirmation from './components/DeleteConfirmation'
-import ReviewStats from './components/ReviewStats'
+import About from './pages/About'
+import Home from './pages/Home'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
     <>
-      <Navbar />
-      <div className='main-container'>
-        <ReviewContextProvider>
-          <Input />
-          <ReviewStats />
-          <Reviews />
-          <DeleteConfirmation />
-        </ReviewContextProvider>
-      </div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Router>
     </>
   )
 }
