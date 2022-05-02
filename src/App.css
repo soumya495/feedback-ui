@@ -325,4 +325,13 @@ nav > h1 {
   .radio-container {
     justify-content: center;
   }
+  .about-link {
+    position: absolute;
+    padding: unset;
+    border: unset;
+    bottom: unset;
+    font-size: 0.95rem;
+    top: 1rem;
+    right: 1rem;
+  }
 }

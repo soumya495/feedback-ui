@@ -1,11 +1,14 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import ReviewContext from '../context/ReviewContext'
 
 function DeleteConfirmation() {
   const { deleteId, setDeleteId, deleteReview } = useContext(ReviewContext)
 
   return (
-    <div className={`fixed-background ${deleteId !== '' && 'active-modal'}`}>
+    <div
+      key='ModalBackground'
+      className={`fixed-background ${deleteId !== '' && 'active-modal'}`}
+    >
       <div className='confirmation-modal'>
         <h4>Are you sure you want to delete this review ?</h4>
         <button onClick={() => deleteReview(deleteId)}>Yes</button>

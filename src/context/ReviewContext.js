@@ -26,6 +26,9 @@ export const ReviewContextProvider = ({ children }) => {
   function deleteReview(reviewId) {
     setReviews(reviews.filter((review) => review.id !== reviewId))
     setDeleteId('')
+    setEditId('')
+    setReview('')
+    setRating(0)
   }
 
   function editReview(reviewId) {
