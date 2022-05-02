@@ -2,16 +2,12 @@
 
 ## Part of the Udemy Course <b>REACT FRONT TO BACK</b> by Brad Traversy
 
-<br />
-
 ## Output
 
-<hr>
 <img src="./screenshot/FramerMotion.gif" width="500" />
 
 ## Concepts Covered
 
-<hr>
 <ul>
 <li>Context Api</li>
 <li>React Router Dom</li>
