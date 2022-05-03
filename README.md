@@ -1,8 +1,8 @@
 # FeedBack UI
 
-## Part of the Udemy Course <b>REACT FRONT TO BACK</b> by Brad Traversy
+<b>Part of the Udemy Course REACT FRONT TO BACK by Brad Traversy</b>
 
-## Output
+<b>Output</b>
 
 <img src="./screenshot/FramerMotion.gif" width="500" />
 
